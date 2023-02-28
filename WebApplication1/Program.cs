@@ -28,6 +28,7 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Password.RequireNonAlphanumeric = true;
     options.Password.RequiredLength = 5; //Mc@st12345
     options.Password.RequireUppercase = true;
+    
 });
 
 
