@@ -8,7 +8,7 @@ namespace WebApplication1.Models
     public class BookViewModel
     {
         [Required(ErrorMessage ="Input Isbn")]
-        [RegularExpression("(?=(?:\\D*\\d){10}(?:(?:\\D*\\d){3})?$)", ErrorMessage ="Isbn is not valid")]
+        [RegularExpression("(\\d){13}$", ErrorMessage ="Isbn is not valid")]
         public string Isbn { get; set; }
 
         [Required(ErrorMessage = "Input Name")]

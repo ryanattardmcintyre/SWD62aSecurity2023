@@ -3,6 +3,7 @@ using DataAccess.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Data;
+using WebApplication1.Validators;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<LibraryContext>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<BooksRepository>();
+builder.Services.AddScoped<PermissionsActionFilter>();
 
 builder.Services.Configure<IdentityOptions>(options =>
 {

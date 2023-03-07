@@ -23,6 +23,19 @@ namespace DataAccess.Repositories
             _context.SaveChanges();
         }
 
+        public void Reserve(Reservation r)
+        {
+            _context.Reservations.Add(r);
+            _context.SaveChanges();
+
+        }
         
+        public bool CanUserReserveBook(string isbn, string user_id)
+        {
+            if (_context.Permissions.Count(x => x.Isbn_Fk == isbn && x.User_Fk == user_id) == 0)
+                return false;
+            else return true;
+        }
+
     }
 }

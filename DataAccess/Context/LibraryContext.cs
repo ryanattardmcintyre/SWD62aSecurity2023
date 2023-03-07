@@ -19,5 +19,7 @@ namespace DataAccess.Context
         public DbSet<Book> Books { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
 
+        public DbSet<Permission> Permissions { get; set; }
+
     }
 }
