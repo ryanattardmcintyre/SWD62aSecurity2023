@@ -1,0 +1,53 @@
+2023-03-14 11:53:46.466 +01:00 [INF] User profile is available. Using 'C:\Users\attar\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-03-14 11:53:47.673 +01:00 [INF] Now listening on: https://localhost:7297
+2023-03-14 11:53:47.673 +01:00 [INF] Now listening on: http://localhost:5086
+2023-03-14 11:53:47.678 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-03-14 11:53:47.678 +01:00 [INF] Hosting environment: Development
+2023-03-14 11:53:47.678 +01:00 [INF] Content root path: C:\Users\attar\Source\Repos\SWD62aSecurity2023\WebApplication1\
+2023-03-14 11:53:49.335 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7297/ - -
+2023-03-14 11:53:50.081 +01:00 [INF] Executing endpoint 'WebApplication1.Controllers.HomeController.Index (WebApplication1)'
+2023-03-14 11:53:50.109 +01:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller WebApplication1.Controllers.HomeController (WebApplication1).
+2023-03-14 11:53:50.150 +01:00 [INF] Executing ViewResult, running view Index.
+2023-03-14 11:53:50.616 +01:00 [INF] Executed ViewResult - view Index executed in 480.5758ms.
+2023-03-14 11:53:50.636 +01:00 [INF] Executed action WebApplication1.Controllers.HomeController.Index (WebApplication1) in 525.5496ms
+2023-03-14 11:53:50.637 +01:00 [INF] Executed endpoint 'WebApplication1.Controllers.HomeController.Index (WebApplication1)'
+2023-03-14 11:53:50.718 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7297/ - - - 200 - text/html;+charset=utf-8 1397.1309ms
+2023-03-14 11:53:50.754 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7297/_framework/aspnetcore-browser-refresh.js - -
+2023-03-14 11:53:50.765 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7297/_framework/aspnetcore-browser-refresh.js - - - 200 12000 application/javascript;+charset=utf-8 11.0094ms
+2023-03-14 11:53:50.913 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7297/_vs/browserLink - -
+2023-03-14 11:53:51.059 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7297/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 145.7599ms
+2023-03-14 11:53:55.750 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7297/books/create - -
+2023-03-14 11:53:55.862 +01:00 [INF] Executing endpoint 'WebApplication1.Controllers.BooksController.Create (WebApplication1)'
+2023-03-14 11:53:55.866 +01:00 [INF] Route matched with {action = "Create", controller = "Books", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Create() on controller WebApplication1.Controllers.BooksController (WebApplication1).
+2023-03-14 11:53:55.870 +01:00 [INF] Executing ViewResult, running view Create.
+2023-03-14 11:53:56.016 +01:00 [INF] Executed ViewResult - view Create executed in 148.1411ms.
+2023-03-14 11:53:56.017 +01:00 [INF] Executed action WebApplication1.Controllers.BooksController.Create (WebApplication1) in 150.6659ms
+2023-03-14 11:53:56.017 +01:00 [INF] Executed endpoint 'WebApplication1.Controllers.BooksController.Create (WebApplication1)'
+2023-03-14 11:53:56.035 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7297/books/create - - - 200 - text/html;+charset=utf-8 284.2930ms
+2023-03-14 11:53:56.121 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7297/_framework/aspnetcore-browser-refresh.js - -
+2023-03-14 11:53:56.123 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7297/_framework/aspnetcore-browser-refresh.js - - - 200 12000 application/javascript;+charset=utf-8 1.2608ms
+2023-03-14 11:53:56.204 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7297/_vs/browserLink - -
+2023-03-14 11:53:56.219 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7297/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 15.3192ms
+2023-03-14 11:54:07.239 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7297/Books/Create multipart/form-data;+boundary=----WebKitFormBoundaryemLvEHMgUZITvEPA 359788
+2023-03-14 11:54:07.273 +01:00 [INF] Executing endpoint 'WebApplication1.Controllers.BooksController.Create (WebApplication1)'
+2023-03-14 11:54:07.333 +01:00 [INF] Route matched with {action = "Create", controller = "Books", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Create(WebApplication1.Models.BookViewModel, Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Hosting.IWebHostEnvironment) on controller WebApplication1.Controllers.BooksController (WebApplication1).
+2023-03-14 11:54:07.587 +01:00 [INF] A new book with name item 1 is about to be created
+2023-03-14 11:54:07.588 +01:00 [INF] Book with name item 1 had validations ok
+2023-03-14 11:54:07.588 +01:00 [INF] Book with name item 1 has a valid extension
+2023-03-14 11:54:07.590 +01:00 [INF] Book with name item 1 has a valid file header which confirms its a pdf
+2023-03-14 11:54:07.590 +01:00 [FTL] Book with name item 1 of size 358961 is about to be saved
+2023-03-14 11:54:10.039 +01:00 [INF] Book with name item 1 is about to be saved in C:\Users\attar\Source\Repos\SWD62aSecurity2023\WebApplication1\Files\a11c26cb-f43e-4c5e-9e71-3d65d03bde14.pdf
+2023-03-14 11:54:10.045 +01:00 [FTL] Book with name item 1 is about to be saved into db
+2023-03-14 11:54:13.523 +01:00 [INF] Entity Framework Core 6.0.11 initialized 'LibraryContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.11' with options: None
+2023-03-14 11:54:16.774 +01:00 [INF] Executed DbCommand (313ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Books] ([Isbn], [Name], [Path], [Year])
+VALUES (@p0, @p1, @p2, @p3);
+2023-03-14 11:54:16.920 +01:00 [INF] Book with name item 1 was saved into db
+2023-03-14 11:54:16.922 +01:00 [INF] Executing RedirectResult, redirecting to /Books.
+2023-03-14 11:54:16.922 +01:00 [INF] Executed action WebApplication1.Controllers.BooksController.Create (WebApplication1) in 9588.5216ms
+2023-03-14 11:54:16.922 +01:00 [INF] Executed endpoint 'WebApplication1.Controllers.BooksController.Create (WebApplication1)'
+2023-03-14 11:54:16.943 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7297/Books/Create multipart/form-data;+boundary=----WebKitFormBoundaryemLvEHMgUZITvEPA 359788 - 302 0 - 9703.4102ms
+2023-03-14 11:54:16.943 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7297/Books - -
+2023-03-14 11:54:16.945 +01:00 [INF] Executing endpoint 'WebApplication1.Controllers.BooksController.Index (WebApplication1)'
+2023-03-14 11:54:16.947 +01:00 [INF] Route matched with {action = "Index", controller = "Books", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller WebApplication1.Controllers.BooksController (WebApplication1).

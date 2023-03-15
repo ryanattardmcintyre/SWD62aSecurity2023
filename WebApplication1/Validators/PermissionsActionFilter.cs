@@ -6,6 +6,12 @@ namespace WebApplication1.Validators
 {
     public class PermissionsActionFilter : IActionFilter
     {
+        private BooksRepository _br;
+        public PermissionsActionFilter(BooksRepository br)
+        {
+            _br = br;
+        }
+
         public void OnActionExecuted(ActionExecutedContext context)
         {
            
@@ -14,7 +20,7 @@ namespace WebApplication1.Validators
         public void OnActionExecuting(ActionExecutingContext context)
         {
 
-          var br=  context.HttpContext.RequestServices.GetService<BooksRepository>();
+         // var br=  context.HttpContext.RequestServices.GetService<BooksRepository>();
 
             //i need to check whether the isbn being input is in the table permissions
             //related with the logged in user
@@ -22,7 +28,7 @@ namespace WebApplication1.Validators
             string id = context.HttpContext.User.Claims.ElementAt(0).Value;
             string isbn = context.HttpContext.Request.Form.ElementAt(0).Value;
 
-            if (br.CanUserReserveBook(isbn, id) == false)
+            if (_br.CanUserReserveBook(isbn, id) == false)
             {
                 context.Result = new ForbidResult();
             }
