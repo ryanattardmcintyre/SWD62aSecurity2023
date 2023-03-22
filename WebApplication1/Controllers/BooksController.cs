@@ -17,11 +17,31 @@ namespace WebApplication1.Controllers
             _booksRepository = booksRepository;
             _logger = logger;
         }
+
         public IActionResult Index()
         {
             //to do: allow the user to download the file from a private folder
+            var list = _booksRepository.GetBooks();
 
-            return View();
+            var output = from book in list
+                         select new BookViewModel()
+                         {
+                             Isbn = book.Isbn,
+                             Name = book.Name 
+                         };
+
+            return View(output);
+        }
+        [Authorize()]
+        public IActionResult Details(string isbn) //isbn now will be encrypted
+        {
+
+            //decrypt the isbn
+
+            var b = _booksRepository.GetBook(isbn);
+            BookViewModel model = new BookViewModel()
+            {  Isbn= b.Isbn, Name = b.Name , Path=b.Path, Year=b.Year };
+            return View(model);
         }
 
         [Authorize()]

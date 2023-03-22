@@ -14,5 +14,9 @@ namespace Domain.Models
         public string Name { get; set; }
         public int Year { get; set; }
         public string Path { get; set; }
+
+        //public string SupplierAddress { get; set; }
+
+        //public double OriginalPrice { get; set; }
     }
 }

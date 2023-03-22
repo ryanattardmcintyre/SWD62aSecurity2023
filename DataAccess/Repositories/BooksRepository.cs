@@ -17,6 +17,16 @@ namespace DataAccess.Repositories
         }
 
 
+        public IQueryable<Book> GetBooks() { 
+        
+           return _context.Books; 
+        }
+
+        public Book GetBook(string isbn) {
+
+            return _context.Books.SingleOrDefault(x => x.Isbn == isbn);
+        }
+
         public void Add(Book b)
         {
             _context.Books.Add(b);
