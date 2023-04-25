@@ -18,7 +18,7 @@ namespace WebApplication1.Models
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Input Year")]
-        [YearCustomValidator]
+        [YearCustomValidator()]
         public int Year { get; set; }
 
         [Required(AllowEmptyStrings =true)]

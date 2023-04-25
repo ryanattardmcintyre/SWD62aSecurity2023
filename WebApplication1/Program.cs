@@ -23,7 +23,7 @@ builder.Services.AddDbContext<LibraryContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
-    .AddEntityFrameworkStores<LibraryContext>();
+    .AddEntityFrameworkStores<LibraryContext>(); 
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<BooksRepository>();
 builder.Services.AddScoped<PermissionsActionFilter>();

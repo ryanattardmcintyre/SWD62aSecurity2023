@@ -5,6 +5,7 @@ using Microsoft.Data.SqlClient;
 using Newtonsoft.Json;
 using System.Text.Encodings.Web;
 using WebApplication1.Models;
+using WebApplication1.Utilities;
 
 namespace WebApplication1.Controllers
 {
@@ -36,7 +37,12 @@ namespace WebApplication1.Controllers
         public IActionResult Details(string isbn) //isbn now will be encrypted
         {
 
+            isbn = isbn.Replace( "_","+");
+            isbn = isbn.Replace( "$","=");
             //decrypt the isbn
+
+            isbn = new Cryptographic().SymmetricDecrypt(isbn);
+
 
             var b = _booksRepository.GetBook(isbn);
             BookViewModel model = new BookViewModel()
@@ -52,8 +58,30 @@ namespace WebApplication1.Controllers
 
         [HttpPost]
         [AutoValidateAntiforgeryToken()]
+        [Authorize]
         public IActionResult Create(BookViewModel book, IFormFile ebook, [FromServices] IWebHostEnvironment host)
         {
+ 
+             //string user_id = _userManager.GetUserId(User);
+
+            ////if condition which checks whether the Keys where already generated
+            
+            //if yes, you retrieve the keys by calling the method GetKeys(...)
+            //if no, you generate the keys, store them in database
+                   //CryptographicKey myKey = new Cryptographic().GenerateAsymmetricKeys();
+                   ////you store it in the database in the table CryptographicKeys
+                  //myKey.User_Fk= user_id;
+
+            
+            //sign the file using the private key generated/retrieved
+
+
+
+
+
+
+
+            string digest = "";
             string fileName = "";
             _logger.LogInformation($"A new book with name {book.Name} is about to be created");
             if (ModelState.IsValid)
@@ -104,6 +132,13 @@ namespace WebApplication1.Controllers
                             ms.Position = 0;
 
                             System.IO.File.WriteAllBytes(absolutePath + "\\" + fileName, ms.ToArray());
+
+                            //we need the bytes being uploaded
+                            ms.Position = 0;
+                           digest = new Cryptographic().Hash(ms.ToArray());
+
+
+
                         }
                     }catch (Exception ex)
                     {
@@ -127,7 +162,8 @@ namespace WebApplication1.Controllers
                         Isbn = book.Isbn,
                         Name = HtmlEncoder.Default.Encode(book.Name),
                         Path = "\\Files\\"+fileName,
-                        Year = book.Year
+                        Year = book.Year,
+                         Digest = digest
                     }
 
                     );
@@ -146,5 +182,33 @@ namespace WebApplication1.Controllers
             }
         
         }
+
+
+        
+        public IActionResult Download(string isbn, [FromServices] IWebHostEnvironment host)
+        {
+            
+
+            var book =_booksRepository.GetBook(isbn);
+            var path = book.Path;
+            string absolutePath = host.ContentRootPath + path;
+
+            byte[] bookAsBytes = System.IO.File.ReadAllBytes(absolutePath);
+            var digestNew = new Cryptographic().Hash(bookAsBytes);
+            if(digestNew == book.Digest)
+            {
+                return File(bookAsBytes, "application/pdf", book.Isbn + ".pdf");
+            }
+            else
+            {
+                return Content("File was tampered with");
+
+            }
+
+
+        }
+
+
+
     }
 }

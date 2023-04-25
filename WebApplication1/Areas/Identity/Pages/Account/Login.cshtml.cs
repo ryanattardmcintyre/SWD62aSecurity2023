@@ -14,16 +14,20 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using Domain.Models;
+using WebApplication1.Utilities;
 
 namespace WebApplication1.Areas.Identity.Pages.Account
 {
     public class LoginModel : PageModel
     {
         private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<IdentityUser> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(UserManager<IdentityUser>  userManager,SignInManager<IdentityUser> signInManager, ILogger<LoginModel> logger)
         {
+            _userManager= userManager;
             _signInManager = signInManager;
             _logger = logger;
         }
@@ -115,6 +119,18 @@ namespace WebApplication1.Areas.Identity.Pages.Account
                     await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: true);
                 if (result.Succeeded)
                 {
+
+                    //string user_id = _userManager.GetUserId(User);
+
+                    ////you make a call to the GenerateAsymmetricKeys
+                    ////if condition which checks whether the Keys where already generated
+                    ////if yes do not re-generate the keys again
+                    ////if no continue
+                    //CryptographicKey myKey = new Cryptographic().GenerateAsymmetricKeys();
+                    ////you store it in the database in the table CryptographicKeys
+                    //myKey.User_Fk= Input.Email;
+                    ////repository class which you can give it myKey and it saves that in the database
+
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
                 }

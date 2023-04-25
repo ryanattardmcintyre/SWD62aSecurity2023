@@ -33,9 +33,11 @@
             </td>
            
             <td> 
-               @{
+                    @{
                         var encryptedIsbn = new WebApplication1.Utilities.Cryptographic().SymmetricEncrypt(item.Isbn);
-                }
+                        encryptedIsbn = encryptedIsbn.Replace("+", "_");
+                        encryptedIsbn = encryptedIsbn.Replace("=", "$");
+                    }
 
 
                 @Html.ActionLink("Details", "Details", new {  isbn=encryptedIsbn  })   
