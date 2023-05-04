@@ -22,10 +22,22 @@ builder.Services.AddDbContext<LibraryContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
-    .AddEntityFrameworkStores<LibraryContext>(); 
+
+
+//builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+//    .AddEntityFrameworkStores<LibraryContext>();
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+               .AddDefaultUI()
+               .AddEntityFrameworkStores<LibraryContext>()
+               .AddDefaultTokenProviders();
+
+
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<BooksRepository>();
+builder.Services.AddScoped<RolesRepository>();
+builder.Services.AddScoped<UsersRepository>();
 builder.Services.AddScoped<PermissionsActionFilter>();
 
 var log = new LoggerConfiguration().WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day, restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Debug).CreateLogger();
@@ -76,3 +88,7 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 app.Run();
+
+
+
+

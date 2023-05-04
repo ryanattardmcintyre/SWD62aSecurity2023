@@ -1,0 +1,29 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@inject DataAccess.Repositories.RolesRepository rr
+@inject DataAccess.Repositories.UsersRepository ur
+
+@{
+}
+
+
+<form method="post" action="/Roles/Allocate">
+    <select name="role">
+        @foreach(var role in rr.GetRoles())
+        {
+            <option value="@role.Name">@role.Name</option>
+        }
+    </select>
+
+    <select name="email">
+        @foreach (var user in ur.GetUsers())
+        {
+            <option value="@user.Email">@user.Email</option>
+        }
+    </select>
+
+    <input type="submit" value="Allocate" />
+
+</form>

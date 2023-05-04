@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Domain.Models;
 using WebApplication1.Utilities;
+using DataAccess.Repositories;
 
 namespace WebApplication1.Areas.Identity.Pages.Account
 {
@@ -24,9 +25,10 @@ namespace WebApplication1.Areas.Identity.Pages.Account
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<LoginModel> _logger;
-
-        public LoginModel(UserManager<IdentityUser>  userManager,SignInManager<IdentityUser> signInManager, ILogger<LoginModel> logger)
+        private readonly UsersRepository _ur;
+        public LoginModel(UserManager<IdentityUser>  userManager,SignInManager<IdentityUser> signInManager, ILogger<LoginModel> logger, UsersRepository ur)
         {
+            _ur = ur;
             _userManager= userManager;
             _signInManager = signInManager;
             _logger = logger;
@@ -120,7 +122,12 @@ namespace WebApplication1.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
 
-                    //string user_id = _userManager.GetUserId(User);
+                    string user_id = _ur.GetUserId(Input.Email);
+                    /*as an alternative code for the above line:
+                     * 
+                     * var userId = _signInManager.UserManager.Users.FirstOrDefault(x=> x.Email == Input.Email)?.Id;
+                     * */
+
 
                     ////you make a call to the GenerateAsymmetricKeys
                     ////if condition which checks whether the Keys where already generated
